@@ -1,0 +1,395 @@
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta property="og:image" content="./images/uw-crest-web.png" />
+    <link rel="icon" type="image/png" href="./images/favicon.ico" />
+    <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+    <meta property="og:title" content="CS766 - Final Project" />
+    <meta property="og:description" content="This is the website for Final Project of CS766: Computer Vision (Spring 2023) @ UW-Madison" />
+    <title>cs766</title>
+    <!-- <link href="base.css" type="text/css" rel="StyleSheet"> -->
+    <link href="index.css" type="text/css" rel="StyleSheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script type="text/javascript" src="jquery.mlens-1.0.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+		<!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98008272-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-98008272-2');
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+		-->
+
+</head>
+
+<body>
+
+    <div class="content">
+			<h1>This is the Place Holder for Project Title</h1>
+            <p><center>Final Project for <a href='https://pages.cs.wisc.edu/~mohitg/courses/CS766/'> CS766: Computer Vision</a> (Spring 2023)</center></p>
+        <p id="authors">
+             
+             <!-- <br> -->
+            <font size="+1">
+            <a href="https://thaoshibe.github.io/">Thao Nguyen</a>
+<!-- 						<a href="http://people.csail.mit.edu/jwulff/">Jonas Wulff</a>
+            <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> -->
+            <!-- <br> -->
+            </font>
+            <br>
+            University of Wisconsin - Madison
+			<br>
+            <img src='./images/uw-logo-flush-web.png' height="80px"></img>
+                        <!-- <i>International Conference on Learning Representations 2021</i> -->
+        </p>
+				<font size="+2">
+					<p style="text-align: center;">
+						<a href="logs.html" target="_blank">[Logs]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="http://latent-composition.csail.mit.edu/presentations/latent_composition_poster.pdf" target="_blank">[Poster]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH?usp=sharing" target="_blank">[Colab]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="bibtex.txt" target="_blank">[Bibtex]</a>
+						<!--
+						<a href="TODO: youtube link?" target="_blank">[Video]</a>
+						-->
+					</p>
+				</font>
+				<font size="+1">
+					<p style="text-align: center;">
+						Skip to:  &nbsp;&nbsp;
+						<a href="#abstract">[Abstract]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#summary">[Summary]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#samples">[Uncurated Samples]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+					</p>
+				</font>
+        <p>
+            <!-- <img class='teaser-img' src='./images/uw-logo-flush-web.png' height="200px"></img> -->
+        </p>
+
+				<p id="abstract"><strong>Abstract: </strong>
+				In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to a high quality output is still an open question. In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time while maintaining global consistency. To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples. We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect. Our method is agnostic to the semantics of edits, and does not require labels or predefined concepts during training. Beyond image composition, our method extends to a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets, and because it uses only a single forward pass, it can operate in real-time. 
+				</p>
+
+        <br clear="all">
+    </div>
+    <div class="content">
+            <p>
+    <h2>Detail checkpoints</h2>
+    <center>
+        <table id="schedule-table">
+            <thead>
+                <tr>
+                    <th scope="col">Class Date</th>
+                    <th scope="col">Topic</th>
+                    <th scope="col">Homeworks and project</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>T, Jan 24</td>
+                    <td>Introduction and Fun with Optical Illusions</td>
+                    <td>HW1 out</td>
+                </tr>
+                <tr>
+                    <td>R, Jan 26</td>
+                    <td>Image Formation</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Jan 31</td>
+                    <td>Image Sensing</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Feb 2</td>
+                    <td>Binary Images and Processing</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Feb 7</td>
+                    <td>Image Processing 1: Basic Image Filtering</td>
+                    <td><span class="notice">HW1 due</span>, HW2 out</td>
+                </tr>
+                <tr>
+                    <td>R, Feb 9</td>
+                    <td>Image Processing 2: Fourier-Domain Image Filtering</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Feb 14</td>
+                    <td>Edge Detection</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Feb 16</td>
+                    <td>Boundary Detection</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Feb 21</td>
+                    <td>2D Object Recognition using SIFT</td>
+                    <td><span class="notice">HW2 due</span>, HW3 out</td>
+                </tr>
+                <tr>
+                    <td>R, Feb 23</td>
+                    <td>Image Alignment</td>
+                    <td><span class="notice">Project proposal due</span></td>
+                </tr>
+                <tr>
+                    <td>T, Feb 28</td>
+                    <td>Making Panoramas</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Mar 2</td>
+                    <td>Face Detection</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Mar 7</td>
+                    <td>Image Segmentation</td>
+                    <td><span class="notice">HW3 due</span>, HW4 out</td>
+                </tr>
+                <tr>
+                    <td>R, Mar 9</td>
+                    <td>Introduction to Neural Networks and Convolutional Neural Networks</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Mar 14</td>
+                    <td><span class="noclass">no class (spring recess)</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Mar 16</td>
+                    <td><span class="noclass">no class (spring recess)</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Mar 21</td>
+                    <td>Radiometry and Surface Appearance</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Mar 23</td>
+                    <td>3D Shape from Photometric Stereo</td>
+                    <td><span class="notice">HW4 due</span>, HW5 out</td>
+                </tr>
+                <tr>
+                    <td>T, Mar 28</td>
+                    <td><span class="noclass">no class</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Mar 30</td>
+                    <td><span class="noclass">no class</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Apr 4</td>
+                    <td>Shape from Focus/Defocus</td>
+                    <td><span class="notice">Project mid-term report due</span></td>
+                </tr>
+                <tr>
+                    <td>R, Apr 6</td>
+                    <td>Camera Calibration and Shape from Stereo</td>
+                    <td><span class="notice">HW5 due</span>, HW6 out</td>
+                </tr>
+                <tr>
+                    <td>T, Apr 11</td>
+                    <td>Shape from Uncalibrated Stereo</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Apr 13</td>
+                    <td>Modern 3D Cameras: Structured Light and Time-of-Flight</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Apr 18</td>
+                    <td>Optical Flow and Motion Measurement</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Apr 20</td>
+                    <td>Image Tracking</td>
+                    <td><span class="notice">HW6 due</span>, HW7 out</td>
+                </tr>
+                <tr>
+                    <td>F, Apr 21</td>
+                    <td>Advanced Topics: Computational Cameras</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, Apr 25</td>
+                    <td>Project presentations</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, Apr 27</td>
+                    <td>Project presentations</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T, May 2</td>
+                    <td>Project presentations</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>R, May 4</td>
+                    <td>Project presentations</td>
+                    <td><span class="notice">HW7 due</span></td>
+                </tr>
+                <tr>
+                    <td>F, May 5</td>
+                    <td></td>
+                    <td><span class="notice">Project webpage due</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    </p>
+    </div>
+<!--     <div class="content" id="summary">
+
+        <h2 style="text-align:center;">Summary</h2>
+
+				<div class="container">
+					<div class="image">
+						<img src='img/teaser.gif'></img>
+					</div>
+					<div class="text">
+						<p> We use a latent regressor network that learns from missing data for image composition and image completion.  The combination of the regressor network and a pretrained GAN forms an image prior to create realistic images despite unrealistic input. This animation briefly demonstrates some applications of our method.</p>
+					</div>
+				</div>
+        <br>
+        <hr>
+        <p style="text-align: center;">Using the latent regression and pretrained GAN, we can create automatic collages and merge them into coherent composite images.</p>
+        <img class='summary-img' src='img/website_composition.jpeg'></img>
+
+        <br>
+        <hr>
+        <p style="text-align: center;">We demonstrate an application of editing and merging real images. <br>To better fit a specific image, we do a few seconds of initial optimization, and the remaining editing occurs in real-time.</p>
+        <img class='summary-img' style="width:80%;" src='img/finetune_edit.jpeg'></img>
+        <br>
+        <hr>
+        <p style="text-align: center;">We use the latent regressor to investigate the independently changeable parts that the GAN learns from data. For example, we visualize what regions of a given image change, when the outlined red portion is modified. The resulting variations show regions of the images that commonly vary together, which can be interpreted as a form of unsupervised part discovery.</p>
+        <img class='summary-img' src='img/website_independence.jpeg'></img>
+			</div>
+			<div class="content" id="samples">
+        <h2 style="text-align:center;">Additional Samples</h2>
+				<p style="text-align: center;">Click on the panels below to view uncurated composite images generated from randomly sampled image parts.</p>
+				<table style="text-align: center;" class="center">
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_church/">
+								<p style="text-align: center;">ProGAN Church</p>
+								<img src="img/samples_proggan_church_sample000002_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_livingroom/">
+								<p style="text-align: center;">ProGAN Living Room</p>
+								<img src="img/samples_proggan_livingroom_sample000000_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_celebahq/">
+								<p style="text-align: center;">ProGAN CelebAHQ</p>
+								<img src="img/samples_proggan_celebahq_sample000008_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+					<tr class="spacertr"></tr>
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_church/">
+								<p style="text-align: center;">StyleGAN Church</p>
+								<img src="img/samples_sgan_church_sample000000_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_car/">
+								<p style="text-align: center;">StyleGAN Car</p>
+								<img src="img/samples_sgan_car_sample000006_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_ffhq/">
+								<p style="text-align: center;">StyleGAN FFHQ</p>
+								<img src="img/samples_sgan_ffhq_sample000011_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<br>
+        <hr>
+				<p style="text-align: center;">Click on the panels below to view comparisons of different image reconstruction methods operating on the same randomly sampled real image parts. Composition is a balance between unifying the input parts to create a realistic output, but still remaining close to the input parts; the methods exhibit a tradeoff of these two factors. A third axis is inference time. In the below webpages, methods that require additional per-image optimization are marked with (*), whereas the other methods operate using a single forward pass. </p>
+				<table style="text-align: center;" class="center">
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/celebahq_face/">
+								<p style="text-align: center;">CelebAHQ Faces</p>
+								<img src="img/samples_celebahq_face_input.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td class="spacertd">
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/lsun_church/">
+								<p style="text-align: center;">LSUN Church</p>
+								<img src="img/samples_lsun_church_input.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+    </div>      --> 
+    <!-- <div class="content" id="references">
+
+        <h2>Reference</h2>
+
+				<p>L Chai, J Wulff, P Isola. Using latent space regression to analyze and leverage compositionality in GANs. <br>International Conference on Learning Representations, 2021.</p>
+
+        <code>
+			@inproceedings{chai2021latent,<br>
+				&nbsp;&nbsp;title={Using latent space regression to analyze and leverage compositionality in GANs.},<br>
+				&nbsp;&nbsp;author={Chai, Lucy and Wulff, Jonas and Isola, Phillip},<br>
+				&nbsp;&nbsp;booktitle={International Conference on Learning Representations},<br>
+				&nbsp;&nbsp;year={2021}<br>
+			 }
+				</code>
+    </div>       -->
+    <div class="content" id="acknowledgements">
+          <p><strong>Acknowledgements</strong>:
+					We would like to thank [] for helpful discussions and feedback. Thanks to [].
+					This website template is adopted from <a href="https://chail.github.io/patch-forensics/">this template</a> and <a href='https://pages.cs.wisc.edu/~mohitg/courses/CS766/'>this template</a>.</p>
+    </div>
+</body>
+
+</html>
