@@ -9,6 +9,9 @@
     <meta property="og:title" content="CS766 - Final Project" />
     <meta property="og:description" content="This is the website for Final Project of CS766: Computer Vision (Spring 2023) @ UW-Madison" />
     <title>cs766</title>
+    <!-- For debug only -->
+    <!-- <meta http-equiv=”refresh” content="5" /> -->
+
     <!-- <link href="base.css" type="text/css" rel="StyleSheet"> -->
     <link href="index.css" type="text/css" rel="StyleSheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -36,7 +39,7 @@
 <body>
 
     <div class="content">
-			<h1>This is the Place Holder for Project Title</h1>
+			<h1>Exploring the Potential of Pretrained Stable Diffusion <br> for Manipulating Facial Attributes</h1>
             <p><center>Final Project for <a href='https://pages.cs.wisc.edu/~mohitg/courses/CS766/'> CS766: Computer Vision</a> (Spring 2023)</center></p>
         <p id="authors">
              
@@ -44,6 +47,7 @@
             <font size="+1">
             <a href="https://thaoshibe.github.io/">Thao Nguyen</a>
             <a href="https://geography.wisc.edu/staff/ji-yuhan/">Yuhan Ji</a>
+            <a href="https://www.linkedin.com/in/qi-yao-4a036917a/">Qi Yao</a>
 <!-- 						<a href="http://people.csail.mit.edu/jwulff/">Jonas Wulff</a>
             <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> -->
             <!-- <br> -->
@@ -56,11 +60,12 @@
         </p>
 				<font size="+2">
 					<p style="text-align: center;">
-						<a href="logs.html" target="_blank">[Logs]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="https://docs.google.com/presentation/d/1fIEMHppZbh9MpYMAh1s8RvmF3nrTVeaJ61ZR9ZAhI0A/edit?usp=sharing">[Meeting Notes]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="" target="_blank">[Video]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://docs.google.com/presentation/d/1fIEMHppZbh9MpYMAh1s8RvmF3nrTVeaJ61ZR9ZAhI0A/edit?usp=sharing">[Slides]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="" target="_blank">[Proposal]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" target="_blank">[Mid-term Report]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" target="_blank">[Final Report]</a>
+						<a href="" target="_blank">[Mid-term Report]</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="logs.html" target="_blank">[Logs]</a>
 						<!--
 						<a href="TODO: youtube link?" target="_blank">[Video]</a>
 						-->
@@ -70,8 +75,11 @@
 					<p style="text-align: center;">
 						Skip to:  &nbsp;&nbsp;
 						<a href="#abstract">[Abstract]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#summary">[Summary]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#samples">[Uncurated Samples]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#framework">[Framework]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#evaluation">[Evaluation]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#qualitative-results">[Qualitative Results]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#quantitative-results">[Qualitative Results]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#related-work">[Related Works]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 					</p>
 				</font>
         <p>
@@ -79,188 +87,74 @@
         </p>
 
 				<p id="abstract"><strong>Abstract: </strong>
-				In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to a high quality output is still an open question. In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time while maintaining global consistency. To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples. We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect. Our method is agnostic to the semantics of edits, and does not require labels or predefined concepts during training. Beyond image composition, our method extends to a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets, and because it uses only a single forward pass, it can operate in real-time. 
+				Facial image manipulation is the task of modifying a person's facial attributes like expressions, accessories, etc. while maintaining the identity and other irrelevant features.
+                A text prompt will be provided as the guidance on how the image should be modified.
 				</p>
-
+                <center>
+                <img src='./images/example_2.png' width="50%"></img>
+                </center>
+                <!-- <embed src='./images/example_2.pdf' width="100%" /> -->
+                <!-- <iframe src='./images/example_2.pdf' style="width: 100%;height: 100%;border: none;"></iframe> -->
         <br clear="all">
     </div>
     <div class="content">
-            <p>
-    <h2>Detail checkpoints</h2>
-    <center>
-        <table id="schedule-table">
-            <thead>
-                <tr>
-                    <th scope="col">Class Date</th>
-                    <th scope="col">Topic</th>
-                    <th scope="col">Homeworks and project</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>T, Jan 24</td>
-                    <td>Introduction and Fun with Optical Illusions</td>
-                    <td>HW1 out</td>
-                </tr>
-                <tr>
-                    <td>R, Jan 26</td>
-                    <td>Image Formation</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Jan 31</td>
-                    <td>Image Sensing</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Feb 2</td>
-                    <td>Binary Images and Processing</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Feb 7</td>
-                    <td>Image Processing 1: Basic Image Filtering</td>
-                    <td><span class="notice">HW1 due</span>, HW2 out</td>
-                </tr>
-                <tr>
-                    <td>R, Feb 9</td>
-                    <td>Image Processing 2: Fourier-Domain Image Filtering</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Feb 14</td>
-                    <td>Edge Detection</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Feb 16</td>
-                    <td>Boundary Detection</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Feb 21</td>
-                    <td>2D Object Recognition using SIFT</td>
-                    <td><span class="notice">HW2 due</span>, HW3 out</td>
-                </tr>
-                <tr>
-                    <td>R, Feb 23</td>
-                    <td>Image Alignment</td>
-                    <td><span class="notice">Project proposal due</span></td>
-                </tr>
-                <tr>
-                    <td>T, Feb 28</td>
-                    <td>Making Panoramas</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Mar 2</td>
-                    <td>Face Detection</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Mar 7</td>
-                    <td>Image Segmentation</td>
-                    <td><span class="notice">HW3 due</span>, HW4 out</td>
-                </tr>
-                <tr>
-                    <td>R, Mar 9</td>
-                    <td>Introduction to Neural Networks and Convolutional Neural Networks</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Mar 14</td>
-                    <td><span class="noclass">no class (spring recess)</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Mar 16</td>
-                    <td><span class="noclass">no class (spring recess)</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Mar 21</td>
-                    <td>Radiometry and Surface Appearance</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Mar 23</td>
-                    <td>3D Shape from Photometric Stereo</td>
-                    <td><span class="notice">HW4 due</span>, HW5 out</td>
-                </tr>
-                <tr>
-                    <td>T, Mar 28</td>
-                    <td><span class="noclass">no class</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Mar 30</td>
-                    <td><span class="noclass">no class</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Apr 4</td>
-                    <td>Shape from Focus/Defocus</td>
-                    <td><span class="notice">Project mid-term report due</span></td>
-                </tr>
-                <tr>
-                    <td>R, Apr 6</td>
-                    <td>Camera Calibration and Shape from Stereo</td>
-                    <td><span class="notice">HW5 due</span>, HW6 out</td>
-                </tr>
-                <tr>
-                    <td>T, Apr 11</td>
-                    <td>Shape from Uncalibrated Stereo</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Apr 13</td>
-                    <td>Modern 3D Cameras: Structured Light and Time-of-Flight</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Apr 18</td>
-                    <td>Optical Flow and Motion Measurement</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Apr 20</td>
-                    <td>Image Tracking</td>
-                    <td><span class="notice">HW6 due</span>, HW7 out</td>
-                </tr>
-                <tr>
-                    <td>F, Apr 21</td>
-                    <td>Advanced Topics: Computational Cameras</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, Apr 25</td>
-                    <td>Project presentations</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, Apr 27</td>
-                    <td>Project presentations</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>T, May 2</td>
-                    <td>Project presentations</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>R, May 4</td>
-                    <td>Project presentations</td>
-                    <td><span class="notice">HW7 due</span></td>
-                </tr>
-                <tr>
-                    <td>F, May 5</td>
-                    <td></td>
-                    <td><span class="notice">Project webpage due</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </center>
+    <h2 id='framework'>Proposed Framework</h2>
+    <p> Given an input image $I$ and editing text instruction $t$, our aim is to produce a new image $\hat{I}$ (shown in Figure \ref{fig:example}). While $\hat{I}$ should be edited according to the text $t$, other factors of image $I$ should be the same.
     </p>
+
+    <p>Figure below shows the framework of the model, which contains two major parts: First, fine-tune the pre-trained stable diffusion model, that is, given one image, we need to implant the new ``word" that represents the face into the diffusion model's dictionary. Second, infer the output image conditioned on the face identifier, image description, and textual prompt.</p>
+    <center>
+    <!-- <center> -->
+    <img src='./images/framework.png' width="80%"></img>
+    </center>
+    </div>
+
+    </div>
+    <div class="content">
+    <h2 id='evaluation'>Evaluation</h2>
+    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+    <center>
+    <!-- <center> -->
+    <img src='./images/evaluationpipeline.png' width="50%"></img>
+    </center>
+    </div>
+    <div class="content">
+    <h2 id='qualitative-results'>Qualitative Results</h2>
+    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+    <center>
+    <!-- <center> -->
+    <img src='./images/uw-logo-flush-web.png' width="50%"></img>
+    </center>
+    </div>
+
+    <div class="content">
+    <h2 id='quantitative-results'>Quantitative Results</h2>
+    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+    <center>
+    <!-- <center> -->
+    <img src='./images/uw-logo-flush-web.png' width="50%"></img>
+    </center>
+    </div>
+
+    <div class="content">
+    <h2 id='related-work'>Related Works</h2>
+    <p><strong>Facial Editing</strong> Over the past few years, Generative Adversarial Models (GANs), particularly StyleGAN \cite{stylegan}, have been widely studied and used for facial image editing. However, the use of GAN models is limited to the learned latent space, which poses challenges in identifying manipulation directions within that space\cite{feat,styleencoder}. In addition, GANs require an image inversion process that may accumulate errors in the editing process \cite{pti,e4e}.
+    While GANs naturally do not support textual input, most existing works lie on exploiting CLIP \cite{clip} to enable GANs to take text prompts as guidance \cite{styleclip}.
+    On the other hand, as trained on billions text-image pairs, diffusion models inherently understand the text-image relationship. Diffusion models \cite{2021diff} have become a better alternative to GANs due to their image quality and interpretability. Text-to-image diffusion models such as DALL-E 2 \cite{ramesh2022hierarchical}, Imagen \cite{saharia2022photorealistic}, Mid-Journey\footnote{\url{https://www.midjourney.com/}}, and Stable Diffusion \cite{stablediffusion}, have proved the power of image generation under the guidance of textual prompts.</p>
+
+    <p><strong>Diffusion Models</strong> Among diffusion models, Stable Diffusion \cite{stablediffusion} is the most popular and can generate high-quality images, but its use in editing images remains an active question.
+    Diff-AE \cite{diffae} proposed to train an autoencoder module to capture the input characters. However, Diff-AE's image quality is not pleasant and manipulation is limited as it based on StyleGAN directions. The state-of-the-art model, InstructPix2Pix \cite{instructpix2pix}, introduced a new synthetic dataset of before-after images to fine-tune Stable Diffusion Model.
+    It has been proven that fine-tuning a model may have a negative impact on its robustness.
+    InstructPix2Pix \cite{instructpix2pix} performs well under common basic settings (for example, ``add glasses"), but struggles with out-of-domain editing, such as ``blue hair" (as depicted in Figure \ref{fig:baseline}).
+    Although Original Stable Diffusion can comprehend the ``blue hair" attribute, InstructPix2Pix cannot replicate this extreme editing, as it may not appear frequently enough in the training sets.</p>
+    <center>
+
+    <p><strong>Textual Inversion</strong> DreamBooth \cite{ruiz2022dreambooth} a module that perform the textual inversion given a collection of the images as reference to a concept. The module can bind a unique identifier with a given input by fine-tuning the stable diffusion model, personalizing the general model in a few shot scenario. A new concept is introduce to the model by leveraging the prior shared knowledge from the class descriptor and then extracting the personalized knowledge by contrasting the images from other images from the same class. As a result, the identifier can well reconstruct the face given representative input.
+    </p>
+    <p><strong>Image Captioning</strong> Natural Language Generation (NLG) techniques will be applied to generate the linguistic contents of the input face image. Given the dataset of face-description pairs, we are able to fine-tune a pre-trained image captioning model specifically for the face class \cite{kumar2022imagecaptioning}. The pre-trained Vision Encoder Decoder Models, in which the encoder is used to encode the image, after which an autoregressive language model generates the caption.</p>
+    <!-- <center> -->
+    <img src='./images/ddim.png' width="60%"></img>
+    </center>
     </div>
 <!--     <div class="content" id="summary">
 
