@@ -1,0 +1,59 @@
+{
+"bald",
+"bangs",
+"black hair",
+"blonde hair",
+"blue hair",
+
+"bigger lips",
+"red lipstick",
+
+"bigger noses",
+"mustache",
+
+"blue eyeglasses",
+"red eyeglasses",
+"black eyeglasses",
+
+"makeup",
+
+"smiling",
+"crying",
+"angry",
+
+"wearing earrings",
+"wearing hats"
+
+"younger",
+"older"
+}
+
+{
+"bald": "make hair become bald",
+"bangs": "add bangs",
+"black hair": "make hair black",
+"blonde hair": "make hair blonde",
+"blue hair": "make hair blue",
+
+"bigger lips": "make lips bigger",
+"red lipstick": "add red lipstick",
+
+"bigger noses": "make noses bigger",
+"mustache": "add mustache",
+
+"blue eyeglasses": "add blue eyeglasses",
+"red eyeglasses": "add red eyeglasses",
+"black eyeglasses": "add black eyeglasses",
+
+"makeup": "add makeup",
+
+"smiling": "make her smile",
+"crying": "make her cry",
+"angry": "make her angry",
+
+"wearing earrings": "add earrings",
+"wearing hats": "put a hat on her",
+
+"younger": "make her younger",
+"older": "make her older"
+}
