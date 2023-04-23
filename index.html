@@ -1,14 +1,14 @@
-
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta property="og:image" content="./images/uw-crest-web.png" />
+    <!-- <meta > -->
     <link rel="icon" type="image/png" href="./images/favicon.ico" />
     <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
     <meta property="og:title" content="CS766 - Final Project" />
     <meta property="og:description" content="This is the website for Final Project of CS766: Computer Vision (Spring 2023) @ UW-Madison" />
-    <title>cs766</title>
+    <title>CS 766</title>
     <!-- For debug only -->
     <!-- <meta http-equiv=”refresh” content="5" /> -->
 
@@ -60,12 +60,12 @@
         </p>
 				<font size="+2">
 					<p style="text-align: center;">
-						<a href="" target="_blank">[Video]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="" target="_blank">[Video 🎥]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://docs.google.com/presentation/d/1fIEMHppZbh9MpYMAh1s8RvmF3nrTVeaJ61ZR9ZAhI0A/edit?usp=sharing">[Slides]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="" target="_blank">[Proposal]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" target="_blank">[Mid-term Report]</a>
+						<a href="" target="_blank">[Mid-term Report 📝]</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="logs.html" target="_blank">[Logs]</a>
+						<a href="logs.html" target="_blank">[More Results 🖼️]</a>
 						<!--
 						<a href="TODO: youtube link?" target="_blank">[Video]</a>
 						-->
@@ -120,10 +120,63 @@
     </div>
     <div class="content">
     <h2 id='qualitative-results'>Qualitative Results</h2>
-    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+    <p>Qualitative results demonstrate that our method can generate images that are <b>consistent with the given text prompt</b>.
+    <br>
+    Especially in <b>Angry 😠, Blue Hair 🔷, and Wearing Hat 🎩</b> cases.
+    <br>
+    Note: All test images have size 512x512, but in here we have manually downscaled them to 300x300 for quicker web rendering. For higher resolution images, please refer to this <a href='https://drive.google.com/drive/folders/1oqTnnLQ-ZzbHOvALEM7prZyCsg3lpCuN?usp=sharing'>Google Drive</a>.</p>
+    </p>
+
+		<table>
+			<center>
+		<!-- <thead> -->
+		<tr>
+			<!-- <th> </th> -->
+			<th colspan="1">Input Image</td>
+			<th colspan="1"><img src='./images/00001.png' width="120px"></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+<!-- 			<th></th>
+			<th></th> -->
+
+		</tr>
+		  <tr>
+		    <td><center>Prompt</center></td>
+		    <td><center>Angry 😠</center></td>
+		    <td><center>Blue Hair 🔷</center></td>
+		    <td><center>Black Glasses </center></td>
+		    <td><center>Red Glasses</center></td>
+		    <td><center>Wearing Earrings</center></td>
+		    <td><center>Wearing Hat 🎩</center></td>
+		  </tr>
+		<!-- </thead> -->
+		<tbody>
+		  <tr>
+		    <td><center>Baseline</center></td>
+		    <td><img src='./images/qualitative/baseline/00001_angry.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/baseline/00001_bluehair.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/baseline/00001_blackeyeglasses.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/baseline/00001_redeyeglasses.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/baseline/00001_wearingearrings.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/baseline/00001_wearinghats.png' width="150px"></img></td>
+		  </tr>
+		  <tr>
+		    <td><center>Ours</center></td>
+		    <td><img src='./images/qualitative/ours/00001_angry.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/ours/00001_bluehair.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/ours/00001_blackeyeglasses.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/ours/00001_redeyeglasses.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/ours/00001_wearingearrings.png' width="150px"></img></td>
+		    <td><img src='./images/qualitative/ours/00001_wearinghats.png' width="150px"></img></td>
+		  </tr>
+		</tbody>
+		</center>
+		</table>
     <center>
     <!-- <center> -->
-    <img src='./images/uw-logo-flush-web.png' width="50%"></img>
+    <!-- <img src='./images/uw-logo-flush-web.png' width="50%"></img> -->
     </center>
     </div>
 
@@ -280,10 +333,30 @@
 			 }
 				</code>
     </div>       -->
-    <div class="content" id="acknowledgements">
+     <div class="content" id="code">
+          <p><strong>Code</strong>: All experiments are conducted on Google Colab. The codes are available at:
+          	<ul>
+          		<li>Framework: </li>
+			  <li>Run baseline: <a href="https://colab.research.google.com/drive/1xrDwGuQiancrGTUWEl9b0lVQzwb28sJR?usp=sharing">Run InstructPix2Pix</a></li>
+			  <li>Evaluation pipeline (CLIP cosine similarity): <a href="https://colab.research.google.com/drive/1C_FR0BLclkJ9C04JZcONPGiWWoP3hD5w?usp=sharing">Evaluation (CLIP)</a></li>
+			</ul>
+          	
+          	<!-- <br> -->
+          	<center>
+          	<img src="https://raw.githubusercontent.com/huggingface/diffusers/77aadfee6a891ab9fcfb780f87c693f7a5beeb8e/docs/source/imgs/diffusers_library.jpg" style="height:7%">
+          	&nbsp
+          	<img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png" style="height:6%">
+          	 &nbsp
+          	<img src="https://static.wikia.nocookie.net/logopedia/images/d/d8/Colab.png/revision/latest?cb=20201019223838" style="height:7%">
+          	<!-- <img src="https://raw.githubusercontent.com/huggingface/diffusers/77aadfee6a891ab9fcfb780f87c693f7a5beeb8e/docs/source/imgs/diffusers_library.jpg" style="width:20%">
+          	<img src="https://raw.githubusercontent.com/huggingface/diffusers/77aadfee6a891ab9fcfb780f87c693f7a5beeb8e/docs/source/imgs/diffusers_library.jpg" style="width:20%"> -->
+		  	
+          	</center>
+<!--     </div>
+    <div class="content" id="code"> -->
           <p><strong>Acknowledgements</strong>:
-					We would like to thank [] for helpful discussions and feedback. Thanks to [].
-					This website template is adopted from <a href="https://chail.github.io/patch-forensics/">this template</a> and <a href='https://pages.cs.wisc.edu/~mohitg/courses/CS766/'>this template</a>.</p>
+					<!-- We would like to thank [] for helpful discussions and feedback. Thanks to []. -->
+					This website template is adopted from <a href="https://chail.github.io/patch-forensics/">this template</a> and <a href='https://pages.cs.wisc.edu/~mohitg/courses/CS766/'>this template</a>. Thank you!</p>
     </div>
 </body>
 
