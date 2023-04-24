@@ -44,7 +44,7 @@
         <p id="authors">
              
              <!-- <br> -->
-            <font size="+1">
+            <font size="+2">
             <a href="https://thaoshibe.github.io/">Thao Nguyen</a>
             <a href="https://geography.wisc.edu/staff/ji-yuhan/">Yuhan Ji</a>
             <a href="https://www.linkedin.com/in/qi-yao-4a036917a/">Qi Yao</a>
@@ -62,8 +62,8 @@
 					<p style="text-align: center;">
 						<a href="" target="_blank">[Video 🎥]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://docs.google.com/presentation/d/1fIEMHppZbh9MpYMAh1s8RvmF3nrTVeaJ61ZR9ZAhI0A/edit?usp=sharing">[Slides]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" target="_blank">[Proposal]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" target="_blank">[Mid-term Report 📝]</a>
+						<a href="https://drive.google.com/file/d/1XkCAc-s3fmPjZ7NJr7rB1uIeWv57FWpY/view?usp=sharing" target="_blank">[Proposal]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://drive.google.com/file/d/1wDn8UVKp7UW-3zqLczgaHQmNdnhiaJs7/view?usp=sharing" target="_blank">[Mid-term Report 📝]</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="logs.html" target="_blank">[More Results 🖼️]</a>
 						<!--
@@ -98,7 +98,7 @@
         <br clear="all">
     </div>
     <div class="content">
-    <h2 id='framework'>Proposed Framework</h2>
+    <h2 id='framework'>🧾 Proposed Framework</h2>
     <p> Given an input image $I$ and editing text instruction $t$, our aim is to produce a new image $\hat{I}$ (shown in Figure \ref{fig:example}). While $\hat{I}$ should be edited according to the text $t$, other factors of image $I$ should be the same.
     </p>
 
@@ -111,7 +111,7 @@
 
     </div>
     <div class="content">
-    <h2 id='evaluation'>Evaluation</h2>
+    <h2 id='evaluation'>📐 Evaluation</h2>
     <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
     <center>
     <!-- <center> -->
@@ -119,14 +119,13 @@
     </center>
     </div>
     <div class="content">
-    <h2 id='qualitative-results'>Qualitative Results</h2>
+    <h2 id='qualitative-results'>🖼 Qualitative Results</h2>
     <p>Qualitative results demonstrate that our method can generate images that are <b>consistent with the given text prompt</b>.
     <br>
     Especially in <b>Angry 😠, Blue Hair 🔷, and Wearing Hat 🎩</b> cases.
     <br>
     Note: All test images have size 512x512, but in here we have manually downscaled them to 300x300 for quicker web rendering. For higher resolution images, please refer to this <a href='https://drive.google.com/drive/folders/1oqTnnLQ-ZzbHOvALEM7prZyCsg3lpCuN?usp=sharing'>Google Drive</a>.</p>
     </p>
-
 		<table>
 			<center>
 		<!-- <thead> -->
@@ -138,9 +137,6 @@
 			<th></th>
 			<th></th>
 			<th></th>
-<!-- 			<th></th>
-			<th></th> -->
-
 		</tr>
 		  <tr>
 		    <td><center>Prompt</center></td>
@@ -181,7 +177,7 @@
     </div>
 
     <div class="content">
-    <h2 id='quantitative-results'>Quantitative Results</h2>
+    <h2 id='quantitative-results'>📊 Quantitative Results</h2>
     <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
     <center>
     <!-- <center> -->
@@ -190,7 +186,64 @@
     </div>
 
     <div class="content">
-    <h2 id='related-work'>Related Works</h2>
+    <h2 id='findings'>📎 Interesting Findings</h2>
+    <p>During the project, we have faces major challengings and issues, in which end up with made several modifications. Here's, we discuss some interesting results, both working cases and non working cases. Some results might have very strong intutive idea behind, but it turned out that it did not works in practices.</p>
+    
+    <!-- <center> -->
+    <p><b>❓ Recovering input from noise</b></p>
+
+    <center>
+    	<figure>
+    	<img src='./images/ddim.png' width="40%"></img>
+    	<figcaption>Figure A: It is non-trivial to recover exactly one image from noise together with descriptions for that images. This is ill-posed problem.</figcaption>
+    	</figure>
+    </center>
+    <p><b>❓ More description is better?</b></p>
+    <center>
+    	<figure>
+    	<img src='./images/framework-old.png' width="50%"></img>
+    	<figcaption>Figure B: Do more description makes more details? The answer is suprpisingly no. More details might hurt the performance.</figcaption>
+    	</figure>
+    </center>
+
+
+		<table style="width:80%">
+		<!-- </thead> -->
+		<tbody>
+		  <tr>
+		    <!-- <td><center>Baseline</center></td> -->
+		    <td><center><img src='./images/desc/00000.jpeg' width="170px"></img></center></td>
+		    <td><center><img src='./images/desc/nlg1.jpeg' width="170px"></img></center></td>
+		    <td><center><img src='./images/desc/nlg_smile.jpeg' width="170px"></img></center></td>
+		    <td><center><img src='./images/desc/nlg_glasses.jpeg' width="170px"></img></center></td>
+		  </tr>
+		  <tr>
+		    <!-- <td><center>Prompt</center></td> -->
+		    <td class="description"><center>Input Image
+		    				<br>(Identity <a style="color:#FF5733;">&#8826V&#8827</a>)</center></td>
+		    <td class="description"><center><a style="color:#FF5733;">&#8826V&#8827</a>
+		    				<br>+
+		    				<br> <a style="color:blue;">"A baby in a blue blanket" </a></center></td>
+		    <td class="description"><center><a style="color:#FF5733;">&#8826V&#8827</a>
+		    				<br> +
+		    				<br><a style="color:blue;">"A baby in a blue blanket" </a>
+		    				<br> +
+		    				<br> <a style="color:green;">"smiling"</a>
+		    	</center></td>
+		    <td class="description"><center><a style="color:#FF5733;">&#8826V&#8827</a>
+		    				<br>+
+		    				<br><a style="color:blue;">"A baby in a blue blanket" </a>
+		    				<br>+
+		    				<br><a style="color:green;">"wearing red glasses"</a>
+		    	</center></td>
+		  </tr>
+		</tbody>
+		</table>
+
+    </div>
+
+    <div class="content">
+    <h2 id='related-work'>📖 Related Works</h2>
     <p><strong>Facial Editing</strong> Over the past few years, Generative Adversarial Models (GANs), particularly StyleGAN \cite{stylegan}, have been widely studied and used for facial image editing. However, the use of GAN models is limited to the learned latent space, which poses challenges in identifying manipulation directions within that space\cite{feat,styleencoder}. In addition, GANs require an image inversion process that may accumulate errors in the editing process \cite{pti,e4e}.
     While GANs naturally do not support textual input, most existing works lie on exploiting CLIP \cite{clip} to enable GANs to take text prompts as guidance \cite{styleclip}.
     On the other hand, as trained on billions text-image pairs, diffusion models inherently understand the text-image relationship. Diffusion models \cite{2021diff} have become a better alternative to GANs due to their image quality and interpretability. Text-to-image diffusion models such as DALL-E 2 \cite{ramesh2022hierarchical}, Imagen \cite{saharia2022photorealistic}, Mid-Journey\footnote{\url{https://www.midjourney.com/}}, and Stable Diffusion \cite{stablediffusion}, have proved the power of image generation under the guidance of textual prompts.</p>
@@ -200,143 +253,19 @@
     It has been proven that fine-tuning a model may have a negative impact on its robustness.
     InstructPix2Pix \cite{instructpix2pix} performs well under common basic settings (for example, ``add glasses"), but struggles with out-of-domain editing, such as ``blue hair" (as depicted in Figure \ref{fig:baseline}).
     Although Original Stable Diffusion can comprehend the ``blue hair" attribute, InstructPix2Pix cannot replicate this extreme editing, as it may not appear frequently enough in the training sets.</p>
-    <center>
+    
 
     <p><strong>Textual Inversion</strong> DreamBooth \cite{ruiz2022dreambooth} a module that perform the textual inversion given a collection of the images as reference to a concept. The module can bind a unique identifier with a given input by fine-tuning the stable diffusion model, personalizing the general model in a few shot scenario. A new concept is introduce to the model by leveraging the prior shared knowledge from the class descriptor and then extracting the personalized knowledge by contrasting the images from other images from the same class. As a result, the identifier can well reconstruct the face given representative input.
     </p>
     <p><strong>Image Captioning</strong> Natural Language Generation (NLG) techniques will be applied to generate the linguistic contents of the input face image. Given the dataset of face-description pairs, we are able to fine-tune a pre-trained image captioning model specifically for the face class \cite{kumar2022imagecaptioning}. The pre-trained Vision Encoder Decoder Models, in which the encoder is used to encode the image, after which an autoregressive language model generates the caption.</p>
-    <!-- <center> -->
-    <img src='./images/ddim.png' width="60%"></img>
-    </center>
+
     </div>
-<!--     <div class="content" id="summary">
 
-        <h2 style="text-align:center;">Summary</h2>
-
-				<div class="container">
-					<div class="image">
-						<img src='img/teaser.gif'></img>
-					</div>
-					<div class="text">
-						<p> We use a latent regressor network that learns from missing data for image composition and image completion.  The combination of the regressor network and a pretrained GAN forms an image prior to create realistic images despite unrealistic input. This animation briefly demonstrates some applications of our method.</p>
-					</div>
-				</div>
-        <br>
-        <hr>
-        <p style="text-align: center;">Using the latent regression and pretrained GAN, we can create automatic collages and merge them into coherent composite images.</p>
-        <img class='summary-img' src='img/website_composition.jpeg'></img>
-
-        <br>
-        <hr>
-        <p style="text-align: center;">We demonstrate an application of editing and merging real images. <br>To better fit a specific image, we do a few seconds of initial optimization, and the remaining editing occurs in real-time.</p>
-        <img class='summary-img' style="width:80%;" src='img/finetune_edit.jpeg'></img>
-        <br>
-        <hr>
-        <p style="text-align: center;">We use the latent regressor to investigate the independently changeable parts that the GAN learns from data. For example, we visualize what regions of a given image change, when the outlined red portion is modified. The resulting variations show regions of the images that commonly vary together, which can be interpreted as a form of unsupervised part discovery.</p>
-        <img class='summary-img' src='img/website_independence.jpeg'></img>
-			</div>
-			<div class="content" id="samples">
-        <h2 style="text-align:center;">Additional Samples</h2>
-				<p style="text-align: center;">Click on the panels below to view uncurated composite images generated from randomly sampled image parts.</p>
-				<table style="text-align: center;" class="center">
-					<tr>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_church/">
-								<p style="text-align: center;">ProGAN Church</p>
-								<img src="img/samples_proggan_church_sample000002_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_livingroom/">
-								<p style="text-align: center;">ProGAN Living Room</p>
-								<img src="img/samples_proggan_livingroom_sample000000_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_celebahq/">
-								<p style="text-align: center;">ProGAN CelebAHQ</p>
-								<img src="img/samples_proggan_celebahq_sample000008_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-					</tr>
-					<tr class="spacertr"></tr>
-					<tr>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_church/">
-								<p style="text-align: center;">StyleGAN Church</p>
-								<img src="img/samples_sgan_church_sample000000_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_car/">
-								<p style="text-align: center;">StyleGAN Car</p>
-								<img src="img/samples_sgan_car_sample000006_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_ffhq/">
-								<p style="text-align: center;">StyleGAN FFHQ</p>
-								<img src="img/samples_sgan_ffhq_sample000011_inverted_RGBM.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-					</tr>
-				</table>
-				<br>
-        <hr>
-				<p style="text-align: center;">Click on the panels below to view comparisons of different image reconstruction methods operating on the same randomly sampled real image parts. Composition is a balance between unifying the input parts to create a realistic output, but still remaining close to the input parts; the methods exhibit a tradeoff of these two factors. A third axis is inference time. In the below webpages, methods that require additional per-image optimization are marked with (*), whereas the other methods operate using a single forward pass. </p>
-				<table style="text-align: center;" class="center">
-					<tr>
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/celebahq_face/">
-								<p style="text-align: center;">CelebAHQ Faces</p>
-								<img src="img/samples_celebahq_face_input.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-						<td class="spacertd">
-						<td>
-							<div class="boxshadow">
-							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/lsun_church/">
-								<p style="text-align: center;">LSUN Church</p>
-								<img src="img/samples_lsun_church_input.png" style="width:150px">
-							</a>
-							</div>
-						</td>
-					</tr>
-				</table>
-    </div>      --> 
-    <!-- <div class="content" id="references">
-
-        <h2>Reference</h2>
-
-				<p>L Chai, J Wulff, P Isola. Using latent space regression to analyze and leverage compositionality in GANs. <br>International Conference on Learning Representations, 2021.</p>
-
-        <code>
-			@inproceedings{chai2021latent,<br>
-				&nbsp;&nbsp;title={Using latent space regression to analyze and leverage compositionality in GANs.},<br>
-				&nbsp;&nbsp;author={Chai, Lucy and Wulff, Jonas and Isola, Phillip},<br>
-				&nbsp;&nbsp;booktitle={International Conference on Learning Representations},<br>
-				&nbsp;&nbsp;year={2021}<br>
-			 }
-				</code>
-    </div>       -->
      <div class="content" id="code">
-          <p><strong>Code</strong>: All experiments are conducted on Google Colab. The codes are available at:
+     	<h2>Miscellaneous</h2>
+          <p><strong>Code</strong>: All experiments are conducted on Google Colab. We're happy to make all codes/ implementation available at:
           	<ul>
-          		<li>Framework: </li>
+          	  <li>Framework: </li>
 			  <li>Run baseline: <a href="https://colab.research.google.com/drive/1xrDwGuQiancrGTUWEl9b0lVQzwb28sJR?usp=sharing">Run InstructPix2Pix</a></li>
 			  <li>Evaluation pipeline (CLIP cosine similarity): <a href="https://colab.research.google.com/drive/1C_FR0BLclkJ9C04JZcONPGiWWoP3hD5w?usp=sharing">Evaluation (CLIP)</a></li>
 			</ul>
