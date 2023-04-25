@@ -261,10 +261,12 @@
     <div class="content">
     <h2 id='quantitative-results'>📊 Quantitative Results</h2>
     <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+
     <center>
     <!-- <center> -->
-    <img src='./images/uw-logo-flush-web.png' width="50%"></img>
+    <img src='./images/quantitative.png' width="70%"></img>
     </center>
+    <p>We randomly sample 20 images from <a href='https://drive.google.com/drive/folders/1YxMbgiXY583eWBgt7BIbh7j1ciSkkhB_?usp=sharing'>CelebA-HQ dataset</a> and apply our methods to compare with baseline.</p>
     </div>
 
     <div class="content">
