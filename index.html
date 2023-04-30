@@ -44,7 +44,7 @@
         <p id="authors">
              
              <!-- <br> -->
-            <font size="+2">
+            <font size="+1">
             <a href="https://thaoshibe.github.io/">Thao Nguyen</a>
             <a href="https://geography.wisc.edu/staff/ji-yuhan/">Yuhan Ji</a>
             <a href="https://www.linkedin.com/in/qi-yao-4a036917a/">Qi Yao</a>
@@ -65,7 +65,9 @@
 						<a href="https://drive.google.com/file/d/1XkCAc-s3fmPjZ7NJr7rB1uIeWv57FWpY/view?usp=sharing" target="_blank">[Proposal]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://drive.google.com/file/d/1wDn8UVKp7UW-3zqLczgaHQmNdnhiaJs7/view?usp=sharing" target="_blank">[Mid-term Report 📝]</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="logs.html" target="_blank">[More Results 🖼️]</a>
+                        <a href="#implementation">[Code]</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <a href="logs.html" target="_blank">[More Results 🖼️]</a> -->
 						<!--
 						<a href="TODO: youtube link?" target="_blank">[Video]</a>
 						-->
@@ -74,12 +76,13 @@
 				<font size="+1">
 					<p style="text-align: center;">
 						Skip to:  &nbsp;&nbsp;
-						<a href="#abstract">[Abstract]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#framework">[Framework]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#evaluation">[Evaluation]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#qualitative-results">[Qualitative Results]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#quantitative-results">[Qualitative Results]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#related-work">[Related Works]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <a href="#abstract">[Abstract]</a> &nbsp;&nbsp;&nbsp; -->
+						<a href="#framework">[Framework]</a> &nbsp;&nbsp;
+						<a href="#evaluation">[Evaluation]</a> &nbsp;&nbsp;
+                        <a href="#qualitative-results">[Qualitative 🖼️]</a> &nbsp;&nbsp;
+                        <a href="#quantitative-results">[Quantitative 📊]</a> &nbsp;&nbsp;
+                        <a href="#related-work">[Related Works 📖]</a> &nbsp;&nbsp;
+                        <a href="#interesting-findings">[Interesting Findings 📎]</a> &nbsp;&nbsp;
 					</p>
 				</font>
         <p>
@@ -89,6 +92,7 @@
 				<p id="abstract"><strong>Abstract: </strong>
 				Facial image manipulation is the task of modifying a person's facial attributes like expressions, accessories, etc. while maintaining the identity and other irrelevant features.
                 A text prompt will be provided as the guidance on how the image should be modified.
+                In this project, we explore the use of Stable Diffusion model for facial editing.
 				</p>
                 <center>
                 <img src='./images/example_2.png' width="50%"></img>
@@ -99,10 +103,10 @@
     </div>
     <div class="content">
     <h2 id='framework'>🧾 Proposed Framework</h2>
-    <p> Given an input image $I$ and editing text instruction $t$, our aim is to produce a new image $\hat{I}$ (shown in Figure \ref{fig:example}). While $\hat{I}$ should be edited according to the text $t$, other factors of image $I$ should be the same.
+    <p> Given an input image I and editing text instruction t, our aim is to produce a new image I'. While I' should be edited according to the text t, other factors of image I should be the same.
     </p>
 
-    <p>Figure below shows the framework of the model, which contains two major parts: First, fine-tune the pre-trained stable diffusion model, that is, given one image, we need to implant the new ``word" that represents the face into the diffusion model's dictionary. Second, infer the output image conditioned on the face identifier, image description, and textual prompt.</p>
+    <p>Figure below shows the framework of the model, which contains two major parts: First, fine-tune the pre-trained stable diffusion model, that is, given one image, we need to implant the new "word" that represents the face into the diffusion model's dictionary. Second, infer the output image conditioned on the face identifier and textual prompt.</p>
     <center>
     <!-- <center> -->
     <img src='./images/framework.png' width="80%"></img>
@@ -112,7 +116,7 @@
     </div>
     <div class="content">
     <h2 id='evaluation'>📐 Evaluation</h2>
-    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+    <p>Our process involves computing embeddings for an image and text using a pre-trained <a href="https://openai.com/research/clip">CLIP model</a>. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description "A photo of a smiling woman", the cosine similarity will indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
     <center>
     <!-- <center> -->
     <img src='./images/evaluationpipeline.png' width="50%"></img>
@@ -122,9 +126,9 @@
     <h2 id='qualitative-results'>🖼 Qualitative Results</h2>
     <p>Qualitative results demonstrate that our method can generate images that are <b>consistent with the given text prompt</b>.
     <br>
-    Especially in <b>Angry 😠, Blue Hair 🔷, and Wearing Hat 🎩</b> cases.
+    Especially in <b>Angry 😠, Blue Glasses 👓, Red Glasses 👓, and Blone Hair 🟨</b> cases.
     <br>
-    Note: All test images have size 512x512, but in here we have manually downscaled them to 300x300 for quicker web rendering. For higher resolution images, please refer to this <a href='https://drive.google.com/drive/folders/1oqTnnLQ-ZzbHOvALEM7prZyCsg3lpCuN?usp=sharing'>Google Drive</a>.</p>
+    Note: All test images have size 512x512, but in here we have manually downscaled them to 300x300 for quicker web rendering. For higher resolution images, please refer to this <a href='https://drive.google.com/drive/folders/1oqTnnLQ-ZzbHOvALEM7prZyCsg3lpCuN?usp=share_link'>🚀 Google Drive for baseline</a>, or this <a href="https://drive.google.com/drive/folders/1GLeArPkx_K1_X4afLzOWerFg-9UHbqjc?usp=share_link"> 🚀 Google Drive for ours</a>.</p>
     </p>
 		<table>
 			<center>
@@ -159,7 +163,7 @@
 		    <td><img src='./images/qualitative/baseline/00007_blondehair.png' width="150px"></img></td>
 		  </tr>
 		  <tr>
-		    <td><center>Ours</center></td>
+		    <td><center><b>Ours ⭐</b></center></td>
 		    <td><img src='./images/qualitative/ours/00007_angry.png' width="150px"></img></td>
 		    <td><img src='./images/qualitative/ours/00007_mustache.png' width="150px"></img></td>
 		    <td><img src='./images/qualitative/ours/00007_blueeyeglasses.png' width="150px"></img></td>
@@ -169,7 +173,7 @@
 		  </tr>
 		</tbody>
 		<tr>
-			<td colspan="7"><hr></td>
+			<!-- <td colspan="7"><hr></td> -->
 		</tr>
 <!-- 		<tr>
 			<th colspan="1">Input Image</td>
@@ -210,16 +214,15 @@
 		  </tr> -->
 		<!-- </tbody> -->
 
-		<tr>
-			<!-- <th> </th> -->
+<!-- 		<tr>
 			<th colspan="1">Input Image</td>
 			<th colspan="1"><img src='./images/00018.png' width="120px"></th>
 			<th></th>
 			<th></th>
 			<th></th>
 			<th></th>
-		</tr>
-		  <tr>
+		</tr> -->
+<!-- 		  <tr>
 		    <td><center>Prompt</center></td>
 		    <td><center>Angry 😠</center></td>
 		    <td><center>Blue Hair 🔷</center></td>
@@ -227,10 +230,10 @@
 		    <td><center>Red Glasses</center></td>
 		    <td><center>Wearing Earrings</center></td>
 		    <td><center>Wearing Hat 🎩</center></td>
-		  </tr>
-		<!-- </thead> -->
-		<tbody>
-		  <tr>
+		  </tr> -->
+
+		<!-- <tbody> -->
+<!-- 		  <tr>
 		    <td><center>Baseline</center></td>
 		    <td><img src='./images/qualitative/baseline/00018_angry.png' width="150px"></img></td>
 		    <td><img src='./images/qualitative/baseline/00018_mustache.png' width="150px"></img></td>
@@ -247,8 +250,8 @@
 		    <td><img src='./images/qualitative/ours/00018_bluehair.png' width="150px"></img></td>
 		    <td><img src='./images/qualitative/ours/00018_wearingearrings.png' width="150px"></img></td>
 		    <td><img src='./images/qualitative/ours/00018_redbangs.png' width="150px"></img></td>
-		  </tr>
-		</tbody>
+		  </tr> -->
+		<!-- </tbody> -->
 		</center>
 		</table>
 
@@ -260,13 +263,15 @@
 
     <div class="content">
     <h2 id='quantitative-results'>📊 Quantitative Results</h2>
-    <p>Our process involves computing embeddings for an image and text using a pre-trained CLIP model \cite{clip}. Since CLIP embeddings have the property of being identical for both text and image, we can use cosine similarity on that embedding space to determine how aligned the text is with the image. For instance, if we have a photo of a woman and the text description ``smile", the cosine similarity would indicate the likelihood of the woman smiling. The cosine similarity score ranges from -1 to 1, with 1 indicating a high likelihood and -1 suggesting no relation.</p>
+        <p>We randomly sample 20 images from <a href='https://drive.google.com/drive/folders/1YxMbgiXY583eWBgt7BIbh7j1ciSkkhB_?usp=sharing'>CelebA-HQ dataset</a> and apply our methods to compare with baseline.
+        	Our process involves computing embeddings for an image and text using a pre-trained <a href="https://openai.com/research/clip">CLIP model</a>.
+        	We compute the mean CLIP cosine similarity between edited images and editing prompts.
+    	In short, there are 20 images (20 identities) paired with 11 editing directions (220 edited images). We surpass baseline on 7/11 editing attributes: <b>63.64%</b>.</p>
 
     <center>
     <!-- <center> -->
     <img src='./images/quantitative.png' width="70%"></img>
     </center>
-    <p>We randomly sample 20 images from <a href='https://drive.google.com/drive/folders/1YxMbgiXY583eWBgt7BIbh7j1ciSkkhB_?usp=sharing'>CelebA-HQ dataset</a> and apply our methods to compare with baseline.</p>
     </div>
 
     <div class="content">
@@ -275,20 +280,21 @@
     
     <!-- <center> -->
     <p><b>❓ Recovering input from noise</b></p>
-
+    <p>Upon conducting a thorough investigation, we have discovered that the DDIM inversion method is unable to function with an additional text prompt as input. When applying the image inversion process with an extra input caption, as shown in Figure A, the resulting reconstructed image differs greatly from the input.</p>
     <center>
     	<figure>
     	<img src='./images/ddim.png' width="40%"></img>
-    	<figcaption>Figure A: It is non-trivial to recover exactly one image from noise together with descriptions for that images. This is ill-posed problem.</figcaption>
+    	<figcaption>Figure A: It is non-trivial to recover exactly one image from noise together with descriptions for that images. This is ill-posed problem as one description might fit to many images.</figcaption>
     	</figure>
     </center>
     <p><b>❓ More description is better?</b></p>
-    <center>
+    <p>In an effort to improve the model's ability to reproduce images accurately, the decision was made to provide more textual description as input. However, the results were not as expected, and it was discovered that adding more descriptive text could actually harm the model's performance. This was attributed to the fact that a single description could be ambiguous and apply to many different images.</p>
+<!--     <center>
     	<figure>
     	<img src='./images/framework-old.png' width="50%"></img>
     	<figcaption>Figure B: Do more description makes more details? The answer is suprpisingly no. More details might hurt the performance.</figcaption>
     	</figure>
-    </center>
+    </center> -->
 
 
 		<table style="width:80%">
@@ -323,34 +329,34 @@
 		  </tr>
 		</tbody>
 		</table>
-
+   <p>To illustrate this point, a Figure B was created showing how adding the description "A baby in a blue blanket" could lead the model to generate an image of a different baby than the one intended. This highlights the trade-off between accuracy and robustness, where the more the model is forced to adhere to the text prompt, the more likely it is to overlook important details in the input image.</p>
     </div>
 
     <div class="content">
     <h2 id='related-work'>📖 Related Works</h2>
-    <p><strong>Facial Editing</strong> Over the past few years, Generative Adversarial Models (GANs), particularly StyleGAN \cite{stylegan}, have been widely studied and used for facial image editing. However, the use of GAN models is limited to the learned latent space, which poses challenges in identifying manipulation directions within that space\cite{feat,styleencoder}. In addition, GANs require an image inversion process that may accumulate errors in the editing process \cite{pti,e4e}.
-    While GANs naturally do not support textual input, most existing works lie on exploiting CLIP \cite{clip} to enable GANs to take text prompts as guidance \cite{styleclip}.
-    On the other hand, as trained on billions text-image pairs, diffusion models inherently understand the text-image relationship. Diffusion models \cite{2021diff} have become a better alternative to GANs due to their image quality and interpretability. Text-to-image diffusion models such as DALL-E 2 \cite{ramesh2022hierarchical}, Imagen \cite{saharia2022photorealistic}, Mid-Journey\footnote{\url{https://www.midjourney.com/}}, and Stable Diffusion \cite{stablediffusion}, have proved the power of image generation under the guidance of textual prompts.</p>
+    <p><strong>Facial Editing</strong> Over the past few years, Generative Adversarial Models (GANs), particularly <a href='https://arxiv.org/abs/1812.04948'>StyleGAN</a>, have been widely studied and used for facial image editing. However, the use of GAN models is limited to the learned latent space, which poses challenges in identifying manipulation directions within that space. In addition, GANs require an image inversion process that may accumulate errors in the editing process.
+    	While GANs naturally do not support textual input, most existing works lie on exploiting <a href='https://openai.com/research/clip'>CLIP</a> to enable GANs to take text prompts as guidance.
+    On the other hand, as trained on billions text-image pairs, <a href="https://ommer-lab.com/research/latent-diffusion-models/">diffusion models</a> inherently understand the text-image relationship. Diffusion models have become a better alternative to GANs due to their image quality and interpretability.</p>
 
-    <p><strong>Diffusion Models</strong> Among diffusion models, Stable Diffusion \cite{stablediffusion} is the most popular and can generate high-quality images, but its use in editing images remains an active question.
-    Diff-AE \cite{diffae} proposed to train an autoencoder module to capture the input characters. However, Diff-AE's image quality is not pleasant and manipulation is limited as it based on StyleGAN directions. The state-of-the-art model, InstructPix2Pix \cite{instructpix2pix}, introduced a new synthetic dataset of before-after images to fine-tune Stable Diffusion Model.
+    <p><strong>Diffusion Models</strong> Among diffusion models, <a href="https://ommer-lab.com/research/latent-diffusion-models/">Stable Diffusion</a> is the most popular and can generate high-quality images, but its use in editing images remains an active question.
+    	The state-of-the-art model, <a href="https://www.timothybrooks.com/instruct-pix2pix/">InstructPix2Pix</a>, introduced a new synthetic dataset of before-after images to fine-tune Stable Diffusion Model.
     It has been proven that fine-tuning a model may have a negative impact on its robustness.
-    InstructPix2Pix \cite{instructpix2pix} performs well under common basic settings (for example, ``add glasses"), but struggles with out-of-domain editing, such as ``blue hair" (as depicted in Figure \ref{fig:baseline}).
-    Although Original Stable Diffusion can comprehend the ``blue hair" attribute, InstructPix2Pix cannot replicate this extreme editing, as it may not appear frequently enough in the training sets.</p>
+    InstructPix2Pix performs well under common basic settings (for example, "add glasses"), but struggles with out-of-domain editing, such as "blue hair".
+    Although Original Stable Diffusion can comprehend the "blue hair" attribute, InstructPix2Pix cannot replicate this extreme editing, as it may not appear frequently enough in the training sets.</p>
     
 
-    <p><strong>Textual Inversion</strong> DreamBooth \cite{ruiz2022dreambooth} a module that perform the textual inversion given a collection of the images as reference to a concept. The module can bind a unique identifier with a given input by fine-tuning the stable diffusion model, personalizing the general model in a few shot scenario. A new concept is introduce to the model by leveraging the prior shared knowledge from the class descriptor and then extracting the personalized knowledge by contrasting the images from other images from the same class. As a result, the identifier can well reconstruct the face given representative input.
+    <p><strong>Textual Inversion</strong> <a href="https://dreambooth.github.io/">DreamBooth</a> a module that perform the textual inversion given a collection of the images as reference to a concept. The module can bind a unique identifier with a given input by fine-tuning the stable diffusion model, personalizing the general model in a few shot scenario. A new concept is introduce to the model by leveraging the prior shared knowledge from the class descriptor and then extracting the personalized knowledge by contrasting the images from other images from the same class. As a result, the identifier can well reconstruct the face given representative input.
     </p>
-    <p><strong>Image Captioning</strong> Natural Language Generation (NLG) techniques will be applied to generate the linguistic contents of the input face image. Given the dataset of face-description pairs, we are able to fine-tune a pre-trained image captioning model specifically for the face class \cite{kumar2022imagecaptioning}. The pre-trained Vision Encoder Decoder Models, in which the encoder is used to encode the image, after which an autoregressive language model generates the caption.</p>
+    <p><strong>Image Captioning</strong> Natural Language Generation (NLG) techniques will be applied to generate the linguistic contents of the input face image. Given the dataset of face-description pairs, we are able to fine-tune a pre-trained image captioning model specifically for the face class. The pre-trained <a href="https://aclanthology.org/2022.naacl-main.42/">Vision Encoder Decoder Models</a>, in which the encoder is used to encode the image, after which an autoregressive language model generates the caption.</p>
 
     </div>
 
-     <div class="content" id="code">
-     	<h2>Miscellaneous</h2>
+     <div class="content">
+     	<h2 id="implementation">📦 Miscellaneous</h2>
           <p><strong>Code</strong>: All experiments are conducted on Google Colab. We're happy to make all codes/ implementation available at:
           </p>
           	<ul>
-          	  <li>Framework: </li>
+          	  <li>Framework: <a href="https://colab.research.google.com/drive/1VufhC6-ZCc6kZj8zdRzbTR4S41XoUFd4?usp=share_link">Modified version of DreamBooth</a></li>
 			  <li>Run baseline: <a href="https://colab.research.google.com/drive/1xrDwGuQiancrGTUWEl9b0lVQzwb28sJR?usp=sharing">Run InstructPix2Pix</a></li>
 			  <li>Evaluation pipeline (CLIP cosine similarity): <a href="https://colab.research.google.com/drive/1C_FR0BLclkJ9C04JZcONPGiWWoP3hD5w?usp=sharing">Evaluation (CLIP)</a></li>
 			</ul>
